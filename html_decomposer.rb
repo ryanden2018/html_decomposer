@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 def find_closing_tags(tokens)
   tokens.select do |token|
     !!token.match(/\A<\s*\/[^<>]*>\z/)
@@ -152,7 +151,7 @@ end
 
 
 # split file into tokens ("<html>", "<head>", textual blocks, ...)
-tokens = contents.scan(/<[^>]*>|[^<>]+/).map { |token| token.strip }
+tokens = contents.scan(/<[^>]*>|[^<>]+/).map { |token| token.strip }.select { |token| token.length > 0 }
 
 
 # open output file for writing
